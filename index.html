@@ -41,19 +41,29 @@
       background-attachment: fixed;
     }
 
-    /* Header Banner with Glassmorphism */
+    /* Disable Image Dragging & Selection */
+    img {
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Header Banner with Glassmorphism & Flex Alignment */
     .header-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-radius: 16px;
-      padding: 36px 24px;
-      text-align: center;
+      padding: 30px 28px;
       margin-bottom: 24px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.5);
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .header-card::before {
@@ -66,11 +76,15 @@
       background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue), var(--accent-purple));
     }
 
+    .header-text {
+      text-align: left;
+    }
+
     h1 {
       font-size: 2.2rem;
       font-weight: 700;
       color: var(--text-main);
-      margin: 0 0 8px 0;
+      margin: 0 0 4px 0;
       letter-spacing: -0.02em;
     }
 
@@ -79,6 +93,17 @@
       font-size: 1.1rem;
       font-weight: 500;
       margin: 0;
+    }
+
+    /* Mini Header Image Styling */
+    .header-mini-img {
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
     }
 
     /* Interactive Accordion Styling */
@@ -190,6 +215,21 @@
       color: var(--text-main);
     }
 
+    /* Hyperlink Styling for Resources Section */
+    .resource-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .resource-link:hover {
+      color: var(--primary-hover);
+      border-bottom-color: var(--primary-hover);
+      text-decoration: none;
+    }
+
     /* Artefact Container */
     .artefact-container {
       margin-top: 24px;
@@ -245,10 +285,9 @@
     }
 
     .grid-item:hover img {
-      transform: scale(1.05); /* Slight zoom effect on hover */
+      transform: scale(1.05);
     }
 
-    /* Hover Overlay Text Container */
     .img-caption-overlay {
       position: absolute;
       bottom: 0;
@@ -266,12 +305,19 @@
     }
 
     .grid-item:hover .img-caption-overlay {
-      opacity: 1; /* Fade in caption on hover */
+      opacity: 1;
     }
 
     @media (max-width: 600px) {
       .photo-grid-2x3 {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .header-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .header-text {
+        text-align: center;
       }
     }
 
@@ -296,8 +342,12 @@
 
   <!-- Header Banner -->
   <div class="header-card">
-    <h1>2026 Individual PD Review</h1>
-    <p class="subtitle">By: Peiqi</p>
+    <div class="header-text">
+      <h1>2026 Individual PD Review</h1>
+      <p class="subtitle">By: Peiqi</p>
+    </div>
+    <!-- Static Mini Header Image -->
+    <img src="https://lh3.googleusercontent.com/d/1xHQZjZhy04CofHybB4QkMflTw6ATLU1N" alt="Header Mini Icon" class="header-mini-img">
   </div>
 
   <!-- Section 1: Motivation -->
@@ -316,34 +366,27 @@
       <div class="artefact-container">
         <div class="artefact-header">📎 Attached Artefacts</div>
 
-        <!-- 2x3 Grid Container with Custom Hover Titles -->
         <div class="photo-grid-2x3">
-          <!-- Image 1 -->
           <a href="https://drive.google.com/file/d/1AIhsM85D9JVfYV9BgQsSTYPvMUD7GOxl/view" target="_blank" class="grid-item" title="Concept Art of Aridara Created with the Help of AI">
             <img src="https://lh3.googleusercontent.com/d/1AIhsM85D9JVfYV9BgQsSTYPvMUD7GOxl" alt="Concept Art of Aridara Created with the Help of AI">
             <div class="img-caption-overlay">Concept Art of Aridara Created with the Help of AI</div>
           </a>
-          <!-- Image 2 -->
           <a href="https://drive.google.com/file/d/12FoqOAwCjyuEYlvbXYANzx5UdBagaY0n/view" target="_blank" class="grid-item" title="Aridara Drawing by a Student">
             <img src="https://lh3.googleusercontent.com/d/12FoqOAwCjyuEYlvbXYANzx5UdBagaY0n" alt="Aridara Drawing by a Student">
             <div class="img-caption-overlay">Aridara Drawing by a Student</div>
           </a>
-          <!-- Image 3 -->
           <a href="https://drive.google.com/file/d/1vQ1w3Qkuv8L2ddASPZ6O2mG1EWrn36F9/view" target="_blank" class="grid-item" title="Aridara Citizenship Card Created by a Student">
             <img src="https://lh3.googleusercontent.com/d/1vQ1w3Qkuv8L2ddASPZ6O2mG1EWrn36F9" alt="Aridara Citizenship Card Created by a Student">
             <div class="img-caption-overlay">Aridara Citizenship Card Created by a Student</div>
           </a>
-          <!-- Image 4 -->
           <a href="https://drive.google.com/file/d/1Qfw59bym26kDMS5az3SvmQUasL5fS0-Y/view" target="_blank" class="grid-item" title="Super Aridara Power Supermarket Poster">
             <img src="https://lh3.googleusercontent.com/d/1Qfw59bym26kDMS5az3SvmQUasL5fS0-Y" alt="Super Aridara Power Supermarket Poster">
             <div class="img-caption-overlay">Super Aridara Power Supermarket Poster</div>
           </a>
-          <!-- Image 5 -->
           <a href="https://drive.google.com/file/d/1o8O8jNHWLIXalWYhI6zJlHkCle5lEgRs/view" target="_blank" class="grid-item" title="Online Market Day">
             <img src="https://lh3.googleusercontent.com/d/1o8O8jNHWLIXalWYhI6zJlHkCle5lEgRs" alt="Online Market Day">
             <div class="img-caption-overlay">Online Market Day</div>
           </a>
-          <!-- Image 6 -->
           <a href="https://drive.google.com/file/d/1ICo7x4MVAvudf_8Trj6UDaSzo1vvJU1i/view" target="_blank" class="grid-item" title="Screenshot of Resources Provided to Students on Google Classroom">
             <img src="https://lh3.googleusercontent.com/d/1ICo7x4MVAvudf_8Trj6UDaSzo1vvJU1i" alt="Screenshot of Resources Provided to Students on Google Classroom">
             <div class="img-caption-overlay">Screenshot of Resources Provided to Students on Google Classroom</div>
@@ -369,34 +412,27 @@
       <div class="artefact-container">
         <div class="artefact-header">📎 Attached Artefacts</div>
 
-        <!-- 2x3 Grid Container for Section 2 -->
         <div class="photo-grid-2x3">
-          <!-- Image 7 -->
-          <a href="https://drive.google.com/file/d/14xiCvn9jtzjGeeJBfcc-rts5BClufxKm/view" target="_blank" class="grid-item" title="Investigating the Volume of Cuboid (Group Work)">
-            <img src="https://lh3.googleusercontent.com/d/14xiCvn9jtzjGeeJBfcc-rts5BClufxKm" alt="Investigating the Volume of Cuboid (Group Work)">
+          <a href="https://drive.google.com/file/d/1th-gdpzNi7yP5_PwbO8qQEeeLxjbiMrD/view" target="_blank" class="grid-item" title="Investigating the Volume of Cuboid (Group Work)">
+            <img src="https://lh3.googleusercontent.com/d/1th-gdpzNi7yP5_PwbO8qQEeeLxjbiMrD" alt="Investigating the Volume of Cuboid (Group Work)">
             <div class="img-caption-overlay">Investigating the Volume of Cuboid (Group Work)</div>
           </a>
-          <!-- Image 8 -->
           <a href="https://drive.google.com/file/d/10l4bUB68HQYoJ7XT2aWfQMUN1VPoIZom/view" target="_blank" class="grid-item" title="Investigating the Volume of Cuboid">
             <img src="https://lh3.googleusercontent.com/d/10l4bUB68HQYoJ7XT2aWfQMUN1VPoIZom" alt="Investigating the Volume of Cuboid">
             <div class="img-caption-overlay">Investigating the Volume of Cuboid</div>
           </a>
-          <!-- Image 9 -->
           <a href="https://drive.google.com/file/d/1jRVtwT54XftKjRTFbqq1tEyQSxKBTOgt/view" target="_blank" class="grid-item" title="Creating Cube Structures (Pair Work) — Extending to Patterns">
             <img src="https://lh3.googleusercontent.com/d/1jRVtwT54XftKjRTFbqq1tEyQSxKBTOgt" alt="Creating Cube Structures (Pair Work) — Extending to Patterns">
             <div class="img-caption-overlay">Creating Cube Structures (Pair Work) — Extending to Patterns</div>
           </a>
-          <!-- Image 10 -->
           <a href="https://drive.google.com/file/d/1CPPTQtQpn-zzJ3OjOwi6ij61cBtf0871/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 1)">
             <img src="https://lh3.googleusercontent.com/d/1CPPTQtQpn-zzJ3OjOwi6ij61cBtf0871" alt="Creating Cube Structures for Aridara (Individual Work 1)">
             <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 1)</div>
           </a>
-          <!-- Image 11 -->
           <a href="https://drive.google.com/file/d/1eoEVP0FUxB9o4lKVGHX5pFPFmt7tfkvM/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 2)">
             <img src="https://lh3.googleusercontent.com/d/1eoEVP0FUxB9o4lKVGHX5pFPFmt7tfkvM" alt="Creating Cube Structures for Aridara (Individual Work 2)">
             <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 2)</div>
           </a>
-          <!-- Image 12 -->
           <a href="https://drive.google.com/file/d/1YGZK7Ulf7hkVA9fIOnR33vJ6erh5j4w2/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 3)">
             <img src="https://lh3.googleusercontent.com/d/1YGZK7Ulf7hkVA9fIOnR33vJ6erh5j4w2" alt="Creating Cube Structures for Aridara (Individual Work 3)">
             <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 3)</div>
@@ -423,10 +459,46 @@
     </div>
   </details>
 
+  <!-- Section 4: Resources -->
+  <details>
+    <summary>
+      <span>4. Resources Created with the Help of AI 📚</span>
+      <div class="icon-box">＋</div>
+    </summary>
+    <div class="content">
+      <br>
+      <ul>
+        <li>
+          <strong><a href="https://youtu.be/L3ccYXmwNz0" target="_blank" class="resource-link">The Aridara Archive (P5 Math: C6 - Volume): </a></strong> Story with each page covering an LO 
+          
+        </li>
+        <li>
+          <strong><a href="https://youtu.be/86j6Cch2NrM" target="_blank" class="resource-link">The Great Metric Mission (P5 Math: C7 - Decimal):</a></strong> Story with questions as puzzles 
+          
+        </li>
+        <li>
+          <strong><a href="https://swt3stanthonyps.github.io/gst-discount-game/" target="_blank" class="resource-link">Super Aridara Power Supermarket Activity:</a></strong> Online Market Day for P5 students to practise calculating prices after GST/discount 
+          
+        </li>
+        <li>
+          <strong><a href="https://swt3stanthonyps.github.io/money-game/" target="_blank" class="resource-link">Math Shopping Game:</a></strong> Interactive game for P2 students to practise factual fluency for Money
+          
+        </li>
+      </ul>
+    </div>
+  </details>
+
   <!-- Closing Note -->
   <div class="closing-note">
     Thank you for taking time to read this. Have a good day! 😊 ❤️
   </div>
+
+  <!-- Disable Right Click Script -->
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
 
 </body>
 </html>
