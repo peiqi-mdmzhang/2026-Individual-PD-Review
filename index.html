@@ -48,6 +48,78 @@
       -webkit-user-select: none;
     }
 
+    /* 🎵 TOP-RIGHT MUSIC TOGGLE WIDGET */
+    .music-control-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .music-toggle-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      user-select: none;
+    }
+
+    /* Toggle Switch Component */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #cbd5e1;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
     /* Header Banner with Glassmorphism & Flex Alignment */
     .header-card {
       background: rgba(255, 255, 255, 0.95);
@@ -126,379 +198,4 @@
 
     summary {
       padding: 22px 26px;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.8);
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: background-color 0.2s ease;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary:hover {
-      background-color: #ffffff;
-    }
-
-    .icon-box {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background-color: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      transition: all 0.3s ease;
-    }
-
-    details[open] summary .icon-box {
-      background-color: var(--primary);
-      color: #ffffff;
-      transform: rotate(45deg);
-    }
-
-    .content {
-      padding: 0 26px 26px 26px;
-      border-top: 1px solid rgba(241, 245, 249, 0.8);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .guiding-question {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin: 22px 0 18px 0;
-      padding: 12px 16px;
-      background-color: #eff6ff;
-      border-radius: 8px;
-      display: inline-block;
-    }
-
-    ul {
-      padding-left: 0;
-      list-style-type: none;
-      margin: 0;
-    }
-
-    li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 14px;
-      color: #334155;
-      font-size: 1rem;
-    }
-
-    li::before {
-      content: "•";
-      position: absolute;
-      left: 6px;
-      top: -2px;
-      color: var(--primary);
-      font-size: 1.4rem;
-    }
-
-    li strong {
-      color: var(--text-main);
-    }
-
-    /* Hyperlink Styling for Resources Section */
-    .resource-link {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1.5px solid transparent;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .resource-link:hover {
-      color: var(--primary-hover);
-      border-bottom-color: var(--primary-hover);
-      text-decoration: none;
-    }
-
-    /* Artefact Container */
-    .artefact-container {
-      margin-top: 24px;
-      padding: 20px;
-      background-color: rgba(248, 250, 252, 0.9);
-      border: 1px dashed #cbd5e1;
-      border-radius: 10px;
-    }
-
-    .artefact-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      color: #334155;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-    }
-
-    /* 📸 2x3 PHOTO GRID WITH HOVER CAPTION OVERLAY */
-    .photo-grid-2x3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .grid-item {
-      display: block;
-      position: relative;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-      background-color: #e2e8f0;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .grid-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .grid-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .img-caption-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
-      color: #ffffff;
-      padding: 20px 10px 10px 10px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
-      pointer-events: none;
-    }
-
-    .grid-item:hover .img-caption-overlay {
-      opacity: 1;
-    }
-
-    @media (max-width: 600px) {
-      .photo-grid-2x3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .header-card {
-        flex-direction: column;
-        text-align: center;
-      }
-      .header-text {
-        text-align: center;
-      }
-    }
-
-    /* Closing Note Container */
-    .closing-note {
-      text-align: center;
-      margin-top: 32px;
-      padding: 20px 24px;
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--border-color);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Banner -->
-  <div class="header-card">
-    <div class="header-text">
-      <h1>2026 Individual PD Review</h1>
-      <p class="subtitle">By: Peiqi</p>
-    </div>
-    <!-- Static Mini Header Image -->
-    <img src="https://lh3.googleusercontent.com/d/1xHQZjZhy04CofHybB4QkMflTw6ATLU1N" alt="Header Mini Icon" class="header-mini-img">
-  </div>
-
-  <!-- Section 1: Motivation -->
-  <details open>
-    <summary>
-      <span>1. Motivation 🧡</span>
-      <div class="icon-box">＋</div>
-    </summary>
-    <div class="content">
-      <div class="guiding-question">How am I inspiring my pupils to want to learn?</div>
-      <ul>
-        <li><strong>Cultivating Personal Value and Joy:</strong> I strive to inspire a love for Mathematics by framing mathematical concepts within a continuous narrative world called <strong>Aridara</strong>. To prevent stories from being read and discarded, students became active "citizens" tasked with saving a kingdom which was slowly losing its magic. They solved problems across multiple units — navigating puzzles in the ruined kingdom for "Decimals", attending the Super Aridara Primary School to learn "Rate" with the main characters and calculating GST/discounts at the Super Aridara Power Supermarket.</li>
-        <li><strong>Promoting Student Voice and Fun:</strong> On Google Classroom, I regularly post engaging riddles, mathematical fun facts and encouraging messages alongside instructional notes. This ongoing online presence builds a positive classroom culture and offers students low-pressure ways to express themselves and take charge of their learning journey.</li>
-      </ul>
-
-      <div class="artefact-container">
-        <div class="artefact-header">📎 Attached Artefacts</div>
-
-        <div class="photo-grid-2x3">
-          <a href="https://drive.google.com/file/d/1AIhsM85D9JVfYV9BgQsSTYPvMUD7GOxl/view" target="_blank" class="grid-item" title="Concept Art of Aridara Created with the Help of AI">
-            <img src="https://lh3.googleusercontent.com/d/1AIhsM85D9JVfYV9BgQsSTYPvMUD7GOxl" alt="Concept Art of Aridara Created with the Help of AI">
-            <div class="img-caption-overlay">Concept Art of Aridara Created with the Help of AI</div>
-          </a>
-          <a href="https://drive.google.com/file/d/12FoqOAwCjyuEYlvbXYANzx5UdBagaY0n/view" target="_blank" class="grid-item" title="Aridara Drawing by a Student">
-            <img src="https://lh3.googleusercontent.com/d/12FoqOAwCjyuEYlvbXYANzx5UdBagaY0n" alt="Aridara Drawing by a Student">
-            <div class="img-caption-overlay">Aridara Drawing by a Student</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1vQ1w3Qkuv8L2ddASPZ6O2mG1EWrn36F9/view" target="_blank" class="grid-item" title="Aridara Citizenship Card Created by a Student">
-            <img src="https://lh3.googleusercontent.com/d/1vQ1w3Qkuv8L2ddASPZ6O2mG1EWrn36F9" alt="Aridara Citizenship Card Created by a Student">
-            <div class="img-caption-overlay">Aridara Citizenship Card Created by a Student</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1Qfw59bym26kDMS5az3SvmQUasL5fS0-Y/view" target="_blank" class="grid-item" title="Super Aridara Power Supermarket Poster">
-            <img src="https://lh3.googleusercontent.com/d/1Qfw59bym26kDMS5az3SvmQUasL5fS0-Y" alt="Super Aridara Power Supermarket Poster">
-            <div class="img-caption-overlay">Super Aridara Power Supermarket Poster</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1o8O8jNHWLIXalWYhI6zJlHkCle5lEgRs/view" target="_blank" class="grid-item" title="Online Market Day">
-            <img src="https://lh3.googleusercontent.com/d/1o8O8jNHWLIXalWYhI6zJlHkCle5lEgRs" alt="Online Market Day">
-            <div class="img-caption-overlay">Online Market Day</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1ICo7x4MVAvudf_8Trj6UDaSzo1vvJU1i/view" target="_blank" class="grid-item" title="Screenshot of Resources Provided to Students on Google Classroom">
-            <img src="https://lh3.googleusercontent.com/d/1ICo7x4MVAvudf_8Trj6UDaSzo1vvJU1i" alt="Screenshot of Resources Provided to Students on Google Classroom">
-            <div class="img-caption-overlay">Screenshot of Resources Provided to Students on Google Classroom</div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <!-- Section 2: Participation in a Community -->
-  <details>
-    <summary>
-      <span>2. Participation in a Community 💬</span>
-      <div class="icon-box">＋</div>
-    </summary>
-    <div class="content">
-      <div class="guiding-question">How am I ensuring every learner is included in the learning process?</div>
-      <ul>
-        <li><strong>Constructivist Learning:</strong> From time to time, I invited my students to discover mathematical concepts through hands-on discovery. For example, for the topic "Volume", students were given the opportunity to build cube structures (using physical cubes and an online interactive) to help with their visualisation of the top/front/side views. They also tried to investigate collaboratively to discover the formula for the volume of a cuboid.</li>
-        <li><strong>Inclusive Platforms and Co-dependent Roles:</strong> Hands-on group tasks required students to rely on one another to complete investigations. Additionally, Google Classroom served as an inclusive platform for all students — especially the more soft-spoken ones — to ask questions, access gamified practice and share their thinking asynchronously.</li>
-      </ul>
-
-      <div class="artefact-container">
-        <div class="artefact-header">📎 Attached Artefacts</div>
-
-        <div class="photo-grid-2x3">
-          <a href="https://drive.google.com/file/d/14xiCvn9jtzjGeeJBfcc-rts5BClufxKm/view" target="_blank" class="grid-item" title="Investigating the Volume of Cuboid (Group Work)">
-            <img src="https://lh3.googleusercontent.com/d/14xiCvn9jtzjGeeJBfcc-rts5BClufxKm" alt="Investigating the Volume of Cuboid (Group Work)">
-            <div class="img-caption-overlay">Investigating the Volume of Cuboid (Group Work)</div>
-          </a>
-          <a href="https://drive.google.com/file/d/10l4bUB68HQYoJ7XT2aWfQMUN1VPoIZom/view" target="_blank" class="grid-item" title="Investigating the Volume of Cuboid">
-            <img src="https://lh3.googleusercontent.com/d/10l4bUB68HQYoJ7XT2aWfQMUN1VPoIZom" alt="Investigating the Volume of Cuboid">
-            <div class="img-caption-overlay">Investigating the Volume of Cuboid</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1jRVtwT54XftKjRTFbqq1tEyQSxKBTOgt/view" target="_blank" class="grid-item" title="Creating Cube Structures (Pair Work) — Extending to Patterns">
-            <img src="https://lh3.googleusercontent.com/d/1jRVtwT54XftKjRTFbqq1tEyQSxKBTOgt" alt="Creating Cube Structures (Pair Work) — Extending to Patterns">
-            <div class="img-caption-overlay">Creating Cube Structures (Pair Work) — Extending to Patterns</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1CPPTQtQpn-zzJ3OjOwi6ij61cBtf0871/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 1)">
-            <img src="https://lh3.googleusercontent.com/d/1CPPTQtQpn-zzJ3OjOwi6ij61cBtf0871" alt="Creating Cube Structures for Aridara (Individual Work 1)">
-            <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 1)</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1eoEVP0FUxB9o4lKVGHX5pFPFmt7tfkvM/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 2)">
-            <img src="https://lh3.googleusercontent.com/d/1eoEVP0FUxB9o4lKVGHX5pFPFmt7tfkvM" alt="Creating Cube Structures for Aridara (Individual Work 2)">
-            <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 2)</div>
-          </a>
-          <a href="https://drive.google.com/file/d/1YGZK7Ulf7hkVA9fIOnR33vJ6erh5j4w2/view" target="_blank" class="grid-item" title="Creating Cube Structures for Aridara (Individual Work 3)">
-            <img src="https://lh3.googleusercontent.com/d/1YGZK7Ulf7hkVA9fIOnR33vJ6erh5j4w2" alt="Creating Cube Structures for Aridara (Individual Work 3)">
-            <div class="img-caption-overlay">Creating Cube Structures for Aridara (Individual Work 3)</div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <!-- Section 3: Challenge -->
-  <details>
-    <summary>
-      <span>3. Challenge ⚙️</span>
-      <div class="icon-box">＋</div>
-    </summary>
-    <div class="content">
-      <div class="guiding-question">How am I stretching every learner to their next level of growth?</div>
-      <ul>
-        <li><strong>Tiered and Accessible Support Structures:</strong> To ensure every student can complete learning tasks independently, I recorded custom instructional videos and uploaded them to Google Classroom. For students who struggled to access the online resources, I attached physical QR codes directly onto their worksheets, scaffolding immediate access and fostering long-term self-management.</li>
-        <li><strong>Low-Pressure Parent Partnerships:</strong> To support student growth beyond the classroom without overwhelming families, I shared learning resources via the ClassDojo portfolio. Parking resources in a central, accessible hub allows parents to support their child's learning needs at their own convenience without the pressure of compulsory follow-ups.</li>
-        <li><strong>Extending Learning Opportunities:</strong> To address time constraints in class and provide further challenge, I created an online interactive version of the Aridara Supermarket activity. Students selected items of their choice, calculated the prices after GST/discount and earned a sticker version of their selected item through a weekly classroom delivery service.</li>
-        <li><strong>Reflection:</strong> While student participation on digital platforms naturally fluctuates throughout the year, posting periodic activities and targeted prompts helped sustain a core group of self-directed learners who consistently seek extended learning opportunities.</li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- Section 4: Resources -->
-  <details>
-    <summary>
-      <span>4. Resources Created with the Help of AI 📚</span>
-      <div class="icon-box">＋</div>
-    </summary>
-    <div class="content">
-      <br>
-      <ul>
-        <li>
-          <strong><a href="https://youtu.be/L3ccYXmwNz0" target="_blank" class="resource-link">The Aridara Archive (P5 Math: C6 - Volume): </a></strong> Story with each page covering an LO 
-          
-        </li>
-        <li>
-          <strong><a href="https://youtu.be/86j6Cch2NrM" target="_blank" class="resource-link">The Great Metric Mission (P5 Math: C7 - Decimal):</a></strong> Story with questions as puzzles 
-          
-        </li>
-        <li>
-          <strong><a href="https://swt3stanthonyps.github.io/gst-discount-game/" target="_blank" class="resource-link">Super Aridara Power Supermarket Activity:</a></strong> Online Market Day for P5 students to practise calculating prices after GST/discount 
-          
-        </li>
-        <li>
-          <strong><a href="https://swt3stanthonyps.github.io/money-game/" target="_blank" class="resource-link">Math Shopping Game:</a></strong> Interactive game for P2 students to practise factual fluency for Money
-          
-        </li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- Closing Note -->
-  <div class="closing-note">
-    Thank you for taking time to read this. Have a good day! 😊 ❤️
-  </div>
-
-  <!-- Disable Right Click Script -->
-  <script>
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-  </script>
-
-</body>
-</html>
+      font-size:
