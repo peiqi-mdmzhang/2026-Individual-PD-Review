@@ -426,10 +426,10 @@
     </div>
   </div>
 
-  <!-- Audio Element: Debussy - Clair de Lune (Calming Classical Piano) -->
-  <audio id="bgMusic" loop>
-    <source src="https://upload.wikimedia.org/wikipedia/commons/2/29/Claude_Debussy_-_Clair_de_lune_%28Laurens_Goedhart%29.ogg" type="audio/ogg">
-    <source src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Claude_Debussy_-_Clair_de_Lune.mp3" type="audio/mpeg">
+  <!-- Audio Element: Direct MP3 Stream (Debussy - Clair de Lune) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://ia800501.us.archive.org/32/items/ClairDeLune_53/Debussy-ClairDeLune.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Header Banner -->
@@ -570,7 +570,7 @@
           <strong><a href="https://peiqi-mdmzhang.github.io/gst-discount-game/" target="_blank" class="resource-link">Super Aridara Power Supermarket Activity:</a></strong> Online Market Day for P5 students to practise calculating prices after GST/discount
         </li>
         <li>
-          <strong><a href="https://peiqi-mdmzhang.github.io/money-game/" target="_blank" class="resource-link">Math Shopping Game:</a></strong> Interactive game for P2 students to practise factual fluency for Money
+          <strong><a href="https://peiqi-mdmzhang.github.io/money-game" target="_blank" class="resource-link">Math Shopping Game:</a></strong> Interactive game for P2 students to practise factual fluency for Money
         </li>
       </ul>
     </div>
@@ -592,13 +592,14 @@
     const music = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
 
-    // Lower volume slightly for smooth ambient background audio
+    // Set ambient volume
     music.volume = 0.4;
 
     musicToggle.addEventListener('change', function() {
       if (this.checked) {
         music.play().catch(function(error) {
-          console.log("Audio playback error:", error);
+          console.error("Audio playback error:", error);
+          alert("Unable to play audio. Please check your network connection or browser sound permissions.");
         });
       } else {
         music.pause();
